@@ -1,0 +1,25 @@
+{
+    "name": "VPS Pterodactyl Auto-Setup",
+    
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {
+            "version": "latest",
+            "moby": true
+        },
+        "ghcr.io/devcontainers/features/sshd:1": {
+            "version": "latest"
+        }
+    },
+    
+    // Port yang diforward untuk akses Panel Pterodactyl dan Wings
+    "forwardPorts": [80, 443, 2022, 8080],
+    
+    // PERHATIAN: Perintah ini hanya menyiapkan tools dasar.
+    // Instalasi Pterodactyl (command di bawah) tetap harus dilakukan secara manual
+    // karena membutuhkan input interaktif (sandi, domain, token).
+    "postCreateCommand": "sudo apt update && sudo apt install -y curl wget",
+    
+    "remoteUser": "vscode"
+}
